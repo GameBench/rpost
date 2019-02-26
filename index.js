@@ -11,7 +11,7 @@
         "-ci": { name: "clientId", prompt: "Please enter your reddit client ID from https://www.reddit.com/prefs/apps", isSecret: false },
         "-cs": { name: "clientSecret", prompt: "Please enter your reddit client secret from https://www.reddit.com/prefs/apps", isSecret: false },
         "-t": { name: "type", prompt: "Please enter the post type (text/link)", isSecret: false },
-        "-f": { name: "flair", prompt: "Please add a flair for the post"},
+        "-f": { name: "flair", prompt: "Please add a flair for the post (ID)"},
         "-pt": { name: "postTitle", prompt: "Please enter the post title", isSecret: false },
         "-px": { name: "postText", prompt: "Please enter the post text (leave empty for link-type post)", isSecret: false },
         "-pu": { name: "postUrl", prompt: "Please enter the post URL (leave empty for text-type post)", isSecret: false },
@@ -142,13 +142,13 @@
                 {
                     data.kind = "self";
                     data.text = post.text;
-                    data.flair_text = post.flair;
+                    data.flair_id = post.flair;
                 }
                 else if(post.type === "link")
                 {
                     data.kind = "link";
                     data.url = post.url;
-                    data.flair_text = post.flair;
+                    data.flair_id = post.flair;
                 }
                 else
                 {
@@ -196,7 +196,7 @@
         console.log("-ci clientId: client ID. See Getting client ID and secret for more details.");
         console.log("-cs clientSecret: client secret. See Getting client ID and secret for more details.");
         console.log("-t type: post type (link/text).");
-        console.log("-f flair: post flair text");
+        console.log("-f flair ID: post flair ID");
         console.log("-pt postTitle: post title.");
         console.log("-px postText: post text. Required only if post type is text.");
         console.log("-pu postUrl: post URL. Required only if post type is link.");
@@ -216,7 +216,7 @@
             this.title = title;
             this.text = text;
             this.url = url;
-            this.flair_text = flair;
+            this.flair_id = flair;
         }
     }
 
