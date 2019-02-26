@@ -2,7 +2,6 @@
 
 (function ()
 {
-    const readlineSync = require('readline-sync');
     const request = require("request");
 
     const ARGUMENT_OPTIONS =
@@ -92,13 +91,6 @@
             const arg = ARGUMENT_OPTIONS[opt];
             if (!inputData[arg.name])
                 missingArgs.push(arg);
-        });
-        missingArgs.forEach(missingArg =>
-        {
-            inputData[missingArg.name] = readlineSync.question(
-                `${missingArg.prompt}: `,
-                { hideEchoBack: missingArg.isSecret }
-            );
         });
     }
 
